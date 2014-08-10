@@ -18,7 +18,7 @@ LoadData <- function() {
   }
   
   # Create a new column with date and time in the appropriate format
-  consumption$Date.Time <- strptime(paste(consumption$Date, consumption$Time), format = "%d/%m/%Y %H:%M:%S")
+  consumption$datetime <- strptime(paste(consumption$Date, consumption$Time), format = "%d/%m/%Y %H:%M:%S")
   
   consumption
 }
@@ -30,9 +30,9 @@ Plot2 <- function() {
   # Create graphics device for png file
   png(file = "plot2.png")
   
-  # Create histogram for Global active power with red color and set main and x axis titles
-  with(consumption, plot(Date.Time, Global_active_power / 1000, type = "l", xlab = "", ylab = "Global Active Power (kilowatts)"))
+  # Create a line for global active power in kilowatts by time
+  with(consumption, plot(datetime, Global_active_power / 1000, type = "l", xlab = "", ylab = "Global Active Power (kilowatts)"))
   
   # Device off
-  dev.off()
+  invisible(dev.off())
 }
