@@ -31,7 +31,7 @@ Plot1 <- function() {
   png(file = "plot1.png")
   
   # Create histogram for Global active power with red color and set main and x axis titles
-  hist(consumption$Global_active_power / 1000, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)")
+  with(consumption, hist(Global_active_power / 1000, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)"))
   
   # Device off
   dev.off()
